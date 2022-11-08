@@ -75,10 +75,48 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready( function () {
       $('#users-list').DataTable();
   } );
+
+function changepwd(uid){
+
+//alert(uid);
+Swal.fire({
+  title: 'Change Password',
+  input: 'password',
+  inputAttributes: {
+    autocapitalize: 'off'
+  },
+  showCancelButton: true,
+  confirmButtonText: 'Change Password',
+  showLoaderOnConfirm: true,
+  preConfirm: (login) => {
+    return fetch(`//api.github.com/users/${login}`)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(response.statusText)
+        }
+        return response.json()
+      })
+      .catch(error => {
+        Swal.showValidationMessage(
+          `Password should not empty: ${error}`
+        )
+      })
+  },
+  allowOutsideClick: () => !Swal.isLoading()
+}).then((result) => {
+  if (result.isConfirmed) {
+    Swal.fire({
+      title: `${result.value.login}'s avatar`,
+      imageUrl: result.value.avatar_url
+    })
+  }
+})
+}
 </script>
 </body>
 </html>
