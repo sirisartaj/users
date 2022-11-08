@@ -1,0 +1,341 @@
+CRITICAL - 2022-11-07 00:23:47 --> Undefined variable: userModel
+in APPPATH\Models\UserModel.php on line 31.
+ 1 APPPATH\Models\UserModel.php(31): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: userModel', 'APPPATH\\Models\\UserModel.php', 31, [...])
+ 2 APPPATH\Controllers\Users.php(102): App\Models\UserModel->finduser(1)
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->setupUser()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 00:51:58 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::find()
+in APPPATH\Models\UserModel.php on line 31.
+ 1 APPPATH\Controllers\Users.php(102): App\Models\UserModel->finduser(1)
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->setupUser()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-07 01:01:07 --> mysqli_sql_exception: Unknown column 'id' in 'order clause' in C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\code4\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\code4\system\Model.php(223): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\code4\system\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\code4\app\Controllers\Users.php(10): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\code4\system\CodeIgniter.php(927): App\Controllers\Users->index()
+#8 C:\xampp\htdocs\code4\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#9 C:\xampp\htdocs\code4\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\code4\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-11-07 01:01:07 --> Unknown column 'id' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *
+FROM `users`
+WHERE `users`.`deleted_at` IS NULL
+ORDER BY `id` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `users`
+WHERE `users`.`deleted_at` IS NULL
+ORDER BY `id` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `users`
+WHERE `users`.`deleted_at` IS NULL
+ORDER BY `id` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `users`.`deleted_at` IS NULL
+ORDER BY `id` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(223): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\Users.php(10): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->index()
+ 9 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+10 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 01:16:54 --> Invalid file: user_view.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('user_view.php')
+ 2 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('user_view', [], true)
+ 3 APPPATH\Controllers\Users.php(11): view('user_view', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->index()
+ 5 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 6 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 01:17:39 --> Undefined variable: some
+in APPPATH\Views\users_list.php on line 1.
+ 1 APPPATH\Views\users_list.php(1): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: some', 'APPPATH\\Views\\users_list.php', 1, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\users_list.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('users_list', [], true)
+ 5 APPPATH\Controllers\Users.php(11): view('users_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->index()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 01:30:07 --> Undefined index: id
+in APPPATH\Views\users_list.php on line 33.
+ 1 APPPATH\Views\users_list.php(33): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id', 'APPPATH\\Views\\users_list.php', 33, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\users_list.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('users_list', [], true)
+ 5 APPPATH\Controllers\Users.php(12): view('users_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->index()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 01:31:09 --> Undefined index: name
+in APPPATH\Views\users_list.php on line 34.
+ 1 APPPATH\Views\users_list.php(34): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: name', 'APPPATH\\Views\\users_list.php', 34, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\users_list.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('users_list', [], true)
+ 5 APPPATH\Controllers\Users.php(12): view('users_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->index()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 01:37:19 --> Invalid file: add_user.php
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('add_user.php')
+ 2 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('add_user', [], true)
+ 3 APPPATH\Controllers\Users.php(16): view('add_user')
+ 4 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->create()
+ 5 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 6 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-07 03:12:31 --> mysqli_sql_exception: Column 'LoginID' cannot be null in C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\code4\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\code4\system\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\code4\system\BaseModel.php(749): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\code4\system\Model.php(667): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\code4\app\Controllers\Users.php(48): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\code4\system\CodeIgniter.php(927): App\Controllers\Users->store()
+#9 C:\xampp\htdocs\code4\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#10 C:\xampp\htdocs\code4\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\code4\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2022-11-07 03:12:31 --> Column 'LoginID' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `users` (`LoginID`, `Password`, `DisplayName`, `Name`, `SurName`, `Gender`, `EmailID`, `Phone`, `Mobile`, `Address1`, `Address2`, `idCountry`, `idState`, `idCity`, `idTimeZone`, `idLocale`, `Status`, `UserType`, `isSuperAdmin`, `DOB`, `UserRole`, `idUserRole`) VALUES (NULL, NULL, \'code4\', \'code4\', \'code4\', \'Male\', \'code4@code4.com\', \'code4\', \'code4\', \'code4\', \'code4\', \'1\', \'11\', \'1\', 1, 1, \'Active\', \'User\', 0, \'2017-08-09\', \'User\', \'2\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`LoginID`, `Password`, `DisplayName`, `Name`, `SurName`, `Gender`, `EmailID`, `Phone`, `Mobile`, `Address1`, `Address2`, `idCountry`, `idState`, `idCity`, `idTimeZone`, `idLocale`, `Status`, `UserType`, `isSuperAdmin`, `DOB`, `UserRole`, `idUserRole`) VALUES (NULL, NULL, \'code4\', \'code4\', \'code4\', \'Male\', \'code4@code4.com\', \'code4\', \'code4\', \'code4\', \'code4\', \'1\', \'11\', \'1\', 1, 1, \'Active\', \'User\', 0, \'2017-08-09\', \'User\', \'2\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`LoginID`, `Password`, `DisplayName`, `Name`, `SurName`, `Gender`, `EmailID`, `Phone`, `Mobile`, `Address1`, `Address2`, `idCountry`, `idState`, `idCity`, `idTimeZone`, `idLocale`, `Status`, `UserType`, `isSuperAdmin`, `DOB`, `UserRole`, `idUserRole`) VALUES (NULL, NULL, \'code4\', \'code4\', \'code4\', \'Male\', \'code4@code4.com\', \'code4\', \'code4\', \'code4\', \'code4\', \'1\', \'11\', \'1\', 1, 1, \'Active\', \'User\', 0, \'2017-08-09\', \'User\', \'2\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`LoginID`, `Password`, `DisplayName`, `Name`, `SurName`, `Gender`, `EmailID`, `Phone`, `Mobile`, `Address1`, `Address2`, `idCountry`, `idState`, `idCity`, `idTimeZone`, `idLocale`, `Status`, `UserType`, `isSuperAdmin`, `DOB`, `UserRole`, `idUserRole`) VALUES (:LoginID:, :Password:, :DisplayName:, :Name:, :SurName:, :Gender:, :EmailID:, :Phone:, :Mobile:, :Address1:, :Address2:, :idCountry:, :idState:, :idCity:, :idTimeZone:, :idLocale:, :Status:, :UserType:, :isSuperAdmin:, :DOB:, :UserRole:, :idUserRole:)', [...], false)
+ 5 SYSTEMPATH\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(749): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(667): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Users.php(48): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->store()
+10 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+11 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-07 03:14:03 --> mysqli_sql_exception: Column 'Password' cannot be null in C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `us...', 0)
+#1 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `us...')
+#2 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `us...')
+#3 C:\xampp\htdocs\code4\system\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `us...', Array, false)
+#4 C:\xampp\htdocs\code4\system\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\code4\system\BaseModel.php(749): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\code4\system\Model.php(667): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\code4\app\Controllers\Users.php(48): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\code4\system\CodeIgniter.php(927): App\Controllers\Users->store()
+#9 C:\xampp\htdocs\code4\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#10 C:\xampp\htdocs\code4\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\code4\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2022-11-07 03:14:03 --> Column 'Password' cannot be null
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('INSERT INTO `users` (`LoginID`, `Password`, `DisplayName`, `Name`, `SurName`, `Gender`, `EmailID`, `Phone`, `Mobile`, `Address1`, `Address2`, `idCountry`, `idState`, `idCity`, `idTimeZone`, `idLocale`, `Status`, `UserType`, `isSuperAdmin`, `DOB`, `UserRole`, `idUserRole`) VALUES (\'code4_code4\', NULL, \'code4\', \'code4\', \'code4\', \'Male\', \'code4@code4.com\', \'code4\', \'code4\', \'code4\', \'code4\', \'1\', \'11\', \'1\', 1, 1, \'Active\', \'User\', 0, \'2017-08-09\', \'User\', \'2\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `users` (`LoginID`, `Password`, `DisplayName`, `Name`, `SurName`, `Gender`, `EmailID`, `Phone`, `Mobile`, `Address1`, `Address2`, `idCountry`, `idState`, `idCity`, `idTimeZone`, `idLocale`, `Status`, `UserType`, `isSuperAdmin`, `DOB`, `UserRole`, `idUserRole`) VALUES (\'code4_code4\', NULL, \'code4\', \'code4\', \'code4\', \'Male\', \'code4@code4.com\', \'code4\', \'code4\', \'code4\', \'code4\', \'1\', \'11\', \'1\', 1, 1, \'Active\', \'User\', 0, \'2017-08-09\', \'User\', \'2\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `users` (`LoginID`, `Password`, `DisplayName`, `Name`, `SurName`, `Gender`, `EmailID`, `Phone`, `Mobile`, `Address1`, `Address2`, `idCountry`, `idState`, `idCity`, `idTimeZone`, `idLocale`, `Status`, `UserType`, `isSuperAdmin`, `DOB`, `UserRole`, `idUserRole`) VALUES (\'code4_code4\', NULL, \'code4\', \'code4\', \'code4\', \'Male\', \'code4@code4.com\', \'code4\', \'code4\', \'code4\', \'code4\', \'1\', \'11\', \'1\', 1, 1, \'Active\', \'User\', 0, \'2017-08-09\', \'User\', \'2\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1916): CodeIgniter\Database\BaseConnection->query('INSERT INTO `users` (`LoginID`, `Password`, `DisplayName`, `Name`, `SurName`, `Gender`, `EmailID`, `Phone`, `Mobile`, `Address1`, `Address2`, `idCountry`, `idState`, `idCity`, `idTimeZone`, `idLocale`, `Status`, `UserType`, `isSuperAdmin`, `DOB`, `UserRole`, `idUserRole`) VALUES (:LoginID:, :Password:, :DisplayName:, :Name:, :SurName:, :Gender:, :EmailID:, :Phone:, :Mobile:, :Address1:, :Address2:, :idCountry:, :idState:, :idCity:, :idTimeZone:, :idLocale:, :Status:, :UserType:, :isSuperAdmin:, :DOB:, :UserRole:, :idUserRole:)', [...], false)
+ 5 SYSTEMPATH\Model.php(279): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(749): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(667): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Users.php(48): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->store()
+10 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+11 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-07 03:25:45 --> mysqli_sql_exception: Unknown column 'id' in 'where clause' in C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `users` ...', 0)
+#1 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` ...')
+#2 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` ...')
+#3 C:\xampp\htdocs\code4\system\Database\BaseBuilder.php(2079): CodeIgniter\Database\BaseConnection->query('UPDATE `users` ...', Array, false)
+#4 C:\xampp\htdocs\code4\system\Model.php(398): CodeIgniter\Database\BaseBuilder->update(Array)
+#5 C:\xampp\htdocs\code4\system\BaseModel.php(984): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\xampp\htdocs\code4\app\Controllers\Users.php(72): CodeIgniter\BaseModel->delete(Array)
+#7 C:\xampp\htdocs\code4\system\CodeIgniter.php(927): App\Controllers\Users->delete('1')
+#8 C:\xampp\htdocs\code4\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+#9 C:\xampp\htdocs\code4\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\code4\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-11-07 03:25:45 --> Unknown column 'id' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('UPDATE `users` SET `deleted_at` = \'2022-11-07 03:25:45\'
+WHERE `id` = \'1\'
+AND `iduser` IN (\'1\')
+AND `deleted_at` IS NULL', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `users` SET `deleted_at` = \'2022-11-07 03:25:45\'
+WHERE `id` = \'1\'
+AND `iduser` IN (\'1\')
+AND `deleted_at` IS NULL')
+ 3 SYSTEMPATH\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `users` SET `deleted_at` = \'2022-11-07 03:25:45\'
+WHERE `id` = \'1\'
+AND `iduser` IN (\'1\')
+AND `deleted_at` IS NULL')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2079): CodeIgniter\Database\BaseConnection->query('UPDATE `users` SET `deleted_at` = :deleted_at:
+WHERE `id` = :id:
+AND `iduser` IN :iduser:
+AND `deleted_at` IS NULL', [...], false)
+ 5 SYSTEMPATH\Model.php(398): CodeIgniter\Database\BaseBuilder->update([...])
+ 6 SYSTEMPATH\BaseModel.php(984): CodeIgniter\Model->doDelete([...], false)
+ 7 APPPATH\Controllers\Users.php(72): CodeIgniter\BaseModel->delete([...])
+ 8 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->delete('1')
+ 9 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+10 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 03:28:16 --> Undefined index: id
+in APPPATH\Views\edit_user.php on line 22.
+ 1 APPPATH\Views\edit_user.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: id', 'APPPATH\\Views\\edit_user.php', 22, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\edit_user.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('edit_user', [], true)
+ 5 APPPATH\Controllers\Users.php(55): view('edit_user', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->singleUser('2')
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 03:29:07 --> Undefined index: name
+in APPPATH\Views\edit_user.php on line 25.
+ 1 APPPATH\Views\edit_user.php(25): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: name', 'APPPATH\\Views\\edit_user.php', 25, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\edit_user.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('edit_user', [], true)
+ 5 APPPATH\Controllers\Users.php(55): view('edit_user', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->singleUser('2')
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 03:29:24 --> Undefined index: EmailId
+in APPPATH\Views\edit_user.php on line 29.
+ 1 APPPATH\Views\edit_user.php(29): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined index: EmailId', 'APPPATH\\Views\\edit_user.php', 29, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\edit_user.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('edit_user', [], true)
+ 5 APPPATH\Controllers\Users.php(55): view('edit_user', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->singleUser('2')
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Users))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ERROR - 2022-11-07 05:00:05 --> mysqli_sql_exception: Unknown column 'iduserrolerole' in 'order clause' in C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\xampp\htdocs\code4\system\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\code4\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\code4\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\code4\system\Model.php(223): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\code4\system\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\code4\app\Controllers\UserRoles.php(10): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\code4\system\CodeIgniter.php(927): App\Controllers\UserRoles->index()
+#8 C:\xampp\htdocs\code4\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+#9 C:\xampp\htdocs\code4\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\code4\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2022-11-07 05:00:05 --> Unknown column 'iduserrolerole' in 'order clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query('SELECT *
+FROM `userrole`
+WHERE `userrole`.`deleted_at` IS NULL
+ORDER BY `iduserrolerole` DESC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `userrole`
+WHERE `userrole`.`deleted_at` IS NULL
+ORDER BY `iduserrolerole` DESC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `userrole`
+WHERE `userrole`.`deleted_at` IS NULL
+ORDER BY `iduserrolerole` DESC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `userrole`
+WHERE `userrole`.`deleted_at` IS NULL
+ORDER BY `iduserrolerole` DESC', [], false)
+ 5 SYSTEMPATH\Model.php(223): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Controllers\UserRoles.php(10): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->index()
+ 9 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+10 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 05:13:31 --> Call to a member function first() on array
+in APPPATH\Controllers\UserRoles.php on line 34.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->singleRole('1')
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 05:14:59 --> Undefined variable: user_obj
+in APPPATH\Views\edit_role.php on line 22.
+ 1 APPPATH\Views\edit_role.php(22): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: user_obj', 'APPPATH\\Views\\edit_role.php', 22, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\edit_role.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('edit_role', [], true)
+ 5 APPPATH\Controllers\UserRoles.php(36): view('edit_role', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->singleRole('1')
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 05:17:44 --> Undefined property: App\Controllers\UserRoles::$db
+in APPPATH\Controllers\UserRoles.php on line 47.
+ 1 APPPATH\Controllers\UserRoles.php(47): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UserRoles::$db', 'APPPATH\\Controllers\\UserRoles.php', 47, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->update()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 05:20:46 --> Undefined property: App\Controllers\UserRoles::$db
+in APPPATH\Controllers\UserRoles.php on line 53.
+ 1 APPPATH\Controllers\UserRoles.php(53): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: App\\Controllers\\UserRoles::$db', 'APPPATH\\Controllers\\UserRoles.php', 53, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->delete('1')
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 05:22:40 --> Undefined variable: UserRoleModel
+in APPPATH\Controllers\UserRoles.php on line 58.
+ 1 APPPATH\Controllers\UserRoles.php(58): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined variable: UserRoleModel', 'APPPATH\\Controllers\\UserRoles.php', 58, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->delete('1')
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 05:28:45 --> Array to string conversion
+in SYSTEMPATH\Model.php on line 219.
+ 1 SYSTEMPATH\Model.php(219): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Array to string conversion', 'SYSTEMPATH\\Model.php', 219, [...])
+ 2 SYSTEMPATH\BaseModel.php(585): CodeIgniter\Model->doFindAll(0, 0)
+ 3 APPPATH\Controllers\UserRoles.php(10): CodeIgniter\BaseModel->findAll()
+ 4 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->index()
+ 5 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+ 6 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 05:29:30 --> Illegal offset type
+in SYSTEMPATH\Model.php on line 392.
+ 1 SYSTEMPATH\Model.php(392): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Illegal offset type', 'SYSTEMPATH\\Model.php', 392, [...])
+ 2 SYSTEMPATH\BaseModel.php(984): CodeIgniter\Model->doDelete([...], false)
+ 3 APPPATH\Controllers\UserRoles.php(60): CodeIgniter\BaseModel->delete([...])
+ 4 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->delete('5')
+ 5 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+ 6 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-11-07 08:31:06 --> Undefined property: CodeIgniter\View\View::$load
+in APPPATH\Views\roles_list.php on line 10.
+ 1 APPPATH\Views\roles_list.php(10): CodeIgniter\Debug\Exceptions->errorHandler(8, 'Undefined property: CodeIgniter\\View\\View::$load', 'APPPATH\\Views\\roles_list.php', 10, [...])
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\roles_list.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render('roles_list', [], true)
+ 5 APPPATH\Controllers\UserRoles.php(12): view('roles_list', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\UserRoles->index()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserRoles))
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
