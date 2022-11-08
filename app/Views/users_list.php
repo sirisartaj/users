@@ -3,7 +3,7 @@
   <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Codeigniter 4 CRUD App Example - positronx.io</title>
+  <title>SIRI</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 </head>
 <body>
@@ -116,7 +116,8 @@ Swal.fire({
             "Success!",
             "Password has been saved!",
             "success"
-            )
+            );
+            location.reload();
         }
         },
         failure: function (response) {
@@ -127,8 +128,6 @@ Swal.fire({
             )
         }
     });
-}else{
-    $('.swal2-popup').append('<span class="errorpwd" style="color:red">Please give the password</span>').find('.errorpwd').delay(1200).fadeOut()
 }
 }
 })

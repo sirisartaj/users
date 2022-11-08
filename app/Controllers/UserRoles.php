@@ -1,6 +1,8 @@
 <?php 
 namespace App\Controllers;
 use App\Models\UserRoleModel;
+use App\Models\roleprivilegesModel;
+use App\Models\accessrightsModel;
 use CodeIgniter\Controller;
 class UserRoles extends Controller
 {
@@ -62,10 +64,31 @@ class UserRoles extends Controller
     }
 
 
-    public function rolePrivileges(){
+    public function rolePrivileges($roleid=''){
 
+        $roleprivilegesModel = new roleprivilegesModel();
+        $accessrightsModel = new accessrightsModel();
+        if($_REQUEST){
+            
+            $roleid = $this->request->getVar('iduserrole');
+            $roleprivilegesModel->where('iduserrole', $roleid)->delete();
+            foreach($_REQUEST['accessright'] as $accessright){
+                $data = [
+                    'iduserrole' => $roleid,
+                    'idaccessright' => $accessright          
+                    ];
+                $roleprivilegesModel->insert($data);
+            }           
 
-        return view('edit_role', $data);
+            return $this->response->redirect(site_url('/rolesList'));
+        }
+
+        $data['roleid']=$roleid;
+        $data['headding'] ='rolePrivileges';
+        $data['accessrights'] = $accessrightsModel->findAll();
+        $data['roleprivilegeslist'] = $roleprivilegesModel->getroleprivileges($roleid);
+
+        return view('rolePrivileges_view', $data);
 
 
     }

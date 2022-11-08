@@ -54,6 +54,8 @@ $routes->get('roleeditView/(:num)', 'UserRoles::singleRole/$1');
 $routes->post('roleupdate', 'UserRoles::update');
 $routes->get('roledelete/(:num)', 'UserRoles::delete/$1');
 $routes->get('rolePrivileges/(:num)', 'UserRoles::rolePrivileges/$1');
+$routes->post('rolePrivileges/(:num)', 'UserRoles::rolePrivileges/$1');
+
 
 /*
  * --------------------------------------------------------------------
