@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group col-md-4">
                   <label for="Address1">Address1</label>
-                  <input type="text" class="form-control" id="mobile" name="Address1" placeholder="Address1">
+                  <input type="text" class="form-control" id="Address1" name="Address1" placeholder="Address1">
                 </div>
 
                 <div class="form-group col-md-4">
@@ -60,15 +60,26 @@
                 </div>
                 <div class="form-group col-md-4">
                   <label for="idCountry">idCountry</label>
-                  <input type="text" class="form-control" id="idCountry" name="idCountry" placeholder="idCountry">
+                  <select id="idCountry" class="form-control"  name="idCountry" >
+                    <option value="1" selected="selected">INDIA</option>
+                  </select>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="idState">idState</label>
-                  <input type="text" class="form-control" id="idState" name="idState" placeholder="idState">
+                  <select id="idState" class="form-control"  name="idState" onChange="statechange(this);" > 
+                  <?php foreach($states as $state){ ?>                 
+                    <option value="<?php echo $state['id']; ?>"><?php echo $state['name']; ?></option>
+                  <?php } ?>
+                                        
+                  </select>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="idCity">idCity</label>
-                  <input type="text" class="form-control" id="idCity" name="idCity" placeholder="idCity">
+                  <select id="idCity" class="form-control"  name="idCity">                  
+                    <option value="1">Amaravati</option>
+                                       
+                  </select>
+                  
                 </div>
                 <div class="form-group col-md-4">
                   <label for="DOB">DOB</label>
@@ -77,10 +88,9 @@
                 <div class="form-group col-md-4">
                   <label for="UserRole">User Role</label>
                   <select id="UserRole" class="form-control"  name="UserRole">
-                    
-                    <option value="Admin_1">Admin</option>
-                    <option value="User_2" selected="selected">User</option>
-                    
+                    <?php foreach($roles as $role){ ?> 
+                    <option value="<?php echo $role['name'].'_'.$role['iduserrole'];?>"><?php echo $role['name'];?></option>
+                  <?php  } ?>
                   </select>
                 </div>
                 <div class="form-group col-md-4">
@@ -96,7 +106,7 @@
                 </div>
                 <div class="row">
       <div class="form-group col-3 ">
-        <button type="submit" class="btn btn-primary btn-block ">Update Data</button>        
+        <button type="submit" class="btn btn-primary btn-block ">Save</button>        
       </div> 
       <div class="form-group col-3 ">
         <a href="<?= site_url('/usersList') ?>" class="btn btn-outline-primary btn-block">Cancel</a>        
@@ -104,7 +114,7 @@
       </div>
     </form>
   </div>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
   <script>
@@ -132,6 +142,21 @@
         },
       })
     }
+
+  
+
+function statechange(v){
+  //alert('<?php echo base_url()."/citiesByState/"; ?>'+v.value);
+  $.ajax({
+    url: "<?php echo base_url().'/citiesByState/'; ?>"+v.value,
+    method: "GET",
+    success: function(result){
+
+        $("#idCity").html(result);
+      }
+  });
+}
+
   </script>
 </body>
 </html>

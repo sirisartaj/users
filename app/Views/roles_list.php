@@ -52,6 +52,7 @@
              <td>
               <a href="<?php echo base_url('roleeditView/'.$role['iduserrole']);?>" class="btn btn-primary btn-sm">Edit</a>
               <a href="<?php echo base_url('roledelete/'.$role['iduserrole']);?>" class="btn btn-danger btn-sm">Delete</a>
+              <a href="<?php echo base_url('rolePrivileges/'.$role['iduserrole']);?>" class="btn btn-danger btn-sm">Privileges</a>
               </td>
           </tr>
          <?php endforeach; ?>
@@ -61,7 +62,7 @@
   </div>
 </div>
  
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script>

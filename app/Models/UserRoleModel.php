@@ -38,13 +38,10 @@ class UserRoleModel extends Model
       // return $user = $userModel->find($user_id);
     }
 
-    public function getUsers($slug = false)
+    public function getroles()
     {
-        if ($slug === false) {
-            return $this->findAll();
-        }
-
-        return $this->where(['slug' => $slug])->first();
+        return $this->findAll();
+        
     }
     
 }

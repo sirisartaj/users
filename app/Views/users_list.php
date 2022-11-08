@@ -49,8 +49,8 @@
           </tr>
        </thead>
        <tbody>
-          <?php if($users): ?>
-          <?php foreach($users as $user): ?>
+          <?php if($userslist): ?>
+          <?php foreach($userslist as $user): ?>
           <tr>
              <td><?php echo $user['iduser']; ?></td>
              <td><?php echo $user['DisplayName']; ?></td>
@@ -72,7 +72,7 @@
   </div>
 </div>
  
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -84,38 +84,61 @@
 function changepwd(uid){
 
 //alert(uid);
+
+
 Swal.fire({
-  title: 'Change Password',
-  input: 'password',
-  inputAttributes: {
-    autocapitalize: 'off'
-  },
-  showCancelButton: true,
-  confirmButtonText: 'Change Password',
-  showLoaderOnConfirm: true,
-  preConfirm: (login) => {
-    return fetch(`//api.github.com/users/${login}`)
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(response.statusText)
-        }
-        return response.json()
-      })
-      .catch(error => {
+    title: "Add Note",
+    input: "password",
+    showCancelButton: true,
+    confirmButtonColor: "#1FAB45",
+    confirmButtonText: "Save",
+    cancelButtonText: "Cancel",
+    buttonsStyling: true,
+    preConfirm: () => {
+    if($('.swal2-input').val()==''){
         Swal.showValidationMessage(
-          `Password should not empty: ${error}`
+          `Please give the Password`
         )
-      })
-  },
-  allowOutsideClick: () => !Swal.isLoading()
+    }
+      
+  }
 }).then((result) => {
   if (result.isConfirmed) {
-    Swal.fire({
-      title: `${result.value.login}'s avatar`,
-      imageUrl: result.value.avatar_url
-    })
-  }
+    if($('.swal2-input').val()){
+    $.ajax({
+        method: "GET",
+        url: "changepwd/"+uid,
+        data: {'uid': uid,'pwd':$('.swal2-input').val()},
+        cache: false,
+        success: function(response) {
+           if(response==1){
+            Swal.fire(
+            "Success!",
+            "Password has been saved!",
+            "success"
+            )
+        }
+        },
+        failure: function (response) {
+            Swal.fire(
+            "Internal Error",
+            "Oops, your Password was not saved.", // had a missing comma
+            "error"
+            )
+        }
+    });
+}else{
+    $('.swal2-popup').append('<span class="errorpwd" style="color:red">Please give the password</span>').find('.errorpwd').delay(1200).fadeOut()
+}
+}
 })
+
+
+
+
+
+
+
 }
 </script>
 </body>

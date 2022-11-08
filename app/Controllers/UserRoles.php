@@ -59,5 +59,16 @@ class UserRoles extends Controller
         $UserRoleModel->update($id, $data);
         $data['role'] = $UserRoleModel->where('iduserrole', $id)->delete($id);
         return $this->response->redirect(site_url('/rolesList'));
-    }    
+    }
+
+
+    public function rolePrivileges(){
+
+
+        return view('edit_role', $data);
+
+
+    }
+
+
 }

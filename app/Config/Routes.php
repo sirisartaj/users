@@ -45,6 +45,7 @@ $routes->get('editView/(:num)', 'Users::singleUser/$1');
 $routes->post('update', 'Users::update');
 $routes->get('delete/(:num)', 'Users::delete/$1');
 $routes->get('changepwd/(:num)', 'Users::changepwd/$1');
+$routes->get('citiesByState/(:num)', 'Users::citiesByState/$1');
 
 $routes->get('rolesList', 'UserRoles::index');
 $routes->get('roleForm', 'UserRoles::create');
@@ -52,6 +53,7 @@ $routes->post('rolesubmitForm', 'UserRoles::store');
 $routes->get('roleeditView/(:num)', 'UserRoles::singleRole/$1');
 $routes->post('roleupdate', 'UserRoles::update');
 $routes->get('roledelete/(:num)', 'UserRoles::delete/$1');
+$routes->get('rolePrivileges/(:num)', 'UserRoles::rolePrivileges/$1');
 
 /*
  * --------------------------------------------------------------------

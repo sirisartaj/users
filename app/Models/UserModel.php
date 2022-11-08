@@ -41,10 +41,27 @@ class UserModel extends Model
     public function getUsers($slug = false)
     {
         if ($slug === false) {
-            return $this->findAll();
+            return $this->orderBy('iduser', 'DESC')->findAll();
         }
 
         return $this->where(['slug' => $slug])->first();
     }
+
+    public function updateUsers($id,$data ='')
+    {
+        
+       return $this->update($id, $data);       
+        
+    }
+
+    public function fetchcitiesbystate($id='')
+    {
+        $this->select('*');
+        $this->table('cities');
+        $cities = $this->where('state_id',$id);
+            print_r($cities);exit;
+        
+    }
+
     
 }
