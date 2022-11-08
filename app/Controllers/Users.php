@@ -9,7 +9,7 @@ class Users extends Controller
         $userModel = new UserModel();
         $data['users'] = $userModel->orderBy('iduser', 'DESC')->findAll();
         $data['some'] = 'aaa';
-        return view('users_list', $data);
+        return view('users_list', $data); 
     }
     // add user form
     public function create(){
