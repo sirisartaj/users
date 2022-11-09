@@ -18,7 +18,7 @@
 <body>
   <div class="container mt-5">
     <form method="post" id="update_user" name="update_user" 
-    action="<?= site_url('/update') ?>">
+    action="<?= site_url('/update') ?>" onsubmit="return validcreateform();">
       <input type="hidden" name="iduser" id="id" value="<?php echo $user_obj['iduser']; ?>">
       <input type="hidden" name="LoginID" id="id" value="<?php echo $user_obj['LoginID']; ?>">
      
@@ -27,28 +27,34 @@
       <div class="form-group col-md-4">
                   <label for="dname">Display Name</label>
                   <input type="text" class="form-control" id="dname" name="DisplayName" placeholder="Display Name" value="<?php echo $user_obj['DisplayName']; ?>">
+                  <span id="dname-error" class="error"></span>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="firstname">First Name</label>
-                  <input type="text" class="form-control" id="firstname" name="Name"  placeholder="First Name" value="<?php echo $user_obj['Name']; ?>">
+                  <label for="name">First Name</label>
+                  <input type="text" class="form-control" id="name" name="Name"  placeholder="First Name" value="<?php echo $user_obj['Name']; ?>">
+                  <span id="name-error" class="error"></span>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="lastName">Last Name</label>
                   <input type="text" class="form-control" id="lastName" name="SurName" placeholder="Last Name" value="<?php echo $user_obj['SurName']; ?>">
+                  <span id="lastName-error" class="error"></span>
                 </div>
 
                 <div class="form-group col-md-4">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" name="EmailID" placeholder="Email" value="<?php echo $user_obj['EmailID']; ?>">
+                  <label for="EmailId">Email</label>
+                  <input type="email" class="form-control" id="EmailId" name="EmailID" placeholder="Email" value="<?php echo $user_obj['EmailID']; ?>">
+                  <span id="EmailId-error" class="error"></span>
                 </div>
                 
                 <div class="form-group col-md-4">
                   <label for="Phone">Phone</label>
                   <input type="text" class="form-control" id="Phone" name="Phone" placeholder="Phone" value="<?php echo $user_obj['Phone']; ?>">
+                  <span id="Phone-error" class="error"></span>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="mobile">Mobile</label>
                   <input type="text" class="form-control" id="mobile" name="Mobile" placeholder="Mobile" value="<?php echo $user_obj['Mobile']; ?>">
+                  <span id="mobile-error" class="error"></span>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="Address1">Address1</label>
@@ -124,7 +130,47 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
   <script>
-    if ($("#update_user").length > 0) {
+    function validcreateform(){
+      var error=0;
+      if($('#dname').val()==''){
+        $('#dname-error').html('please enter Display Name');
+        error=1;
+      }else{
+        $('#dname-error').html('');
+      }
+
+      if($('#name').val()==''){
+        $('#name-error').html('please enter First Name');
+        error=1;
+      }else{
+        $('#name-error').html('');
+      }
+      if($('#EmailId').val()==''){
+        $('#EmailId-error').html('please enter EmailId');
+        error=1;
+      }else{
+        $('#EmailId-error').html('');
+      }
+      if($('#mobile').val()==''){
+        $('#mobile-error').html('please enter mobile');
+        error=1;
+      }else{
+        $('#mobile-error').html('');
+      }
+
+      if($('#Phone').val()==''){
+        $('#Phone-error').html('please enter Phone');
+        error=1;
+      }else{
+        $('#Phone-error').html('');
+      }
+      
+
+      if(error){
+        return false;
+      }
+    }
+   /* if ($("#update_user").length > 0) {
       $("#update_user").validate({
         rules: {
           name: {
@@ -134,6 +180,10 @@
             required: true,
             maxlength: 60,
             email: true,
+          },
+          mobile: {
+            required: true,
+            
           },
         },
         messages: {
@@ -145,9 +195,12 @@
             email: "It does not seem to be a valid email.",
             maxlength: "The email should be or equal to 60 chars.",
           },
+          mobile: {
+            required: "mobile is required.",
+          },
         },
       })
-    }
+    }*/
   </script>
 </body>
 </html>

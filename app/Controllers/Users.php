@@ -34,32 +34,56 @@ class Users extends Controller
         $userModel = new UserModel();
         $role=explode('_', $this->request->getVar('UserRole')); 
 
-        $data = [
-            'LoginID' => $this->request->getVar('DisplayName').'_'.$this->request->getVar('Mobile'),//$this->request->getVar('LoginID'),
-            'Password' => $this->request->getVar('Password'),
-            'DisplayName' => $this->request->getVar('DisplayName'),
-            'Name' => $this->request->getVar('Name'),
-            'SurName' => $this->request->getVar('SurName'),
-            'Gender' => $this->request->getVar('Gender'),
-            'EmailID'  => $this->request->getVar('EmailID'),
-            'Phone'  => $this->request->getVar('Phone'),
-            'Mobile'  => $this->request->getVar('Mobile'),
-            'Address1'  => $this->request->getVar('Address1'),
-            'Address2'  => $this->request->getVar('Address2'),
-            'idCountry'  => $this->request->getVar('idCountry'),
-            'idState'  => $this->request->getVar('idState'),
-            'idCity'  => $this->request->getVar('idCity'),
-            'idTimeZone'  => 1,
-            'idLocale'  => 1,
-            'Status'  => 'Active',
-            'UserType'  => 'User',
-            'isSuperAdmin'  => 0,
-            'DOB'  => $this->request->getVar('DOB'),
-            'UserRole'  => $role[0],
-            'idUserRole'  => $role[1],
+
+        helper(['form']);
+        $rules = [
+            'DisplayName' => 'required|min_length[3]',
+            'name' => 'required|min_length[3]',
+            'EmailID' => 'required|valid_email',
+            'phone' => 'required|numeric|max_length[10]',
+            'Mobile' => 'required|numeric|max_length[10]'
         ];
-        $userModel->insert($data);
-        return $this->response->redirect(site_url('/usersList'));
+
+        if($this->validate($rules)){
+
+
+            $data = [
+                'LoginID' => $this->request->getVar('DisplayName').'_'.$this->request->getVar('Mobile'),//$this->request->getVar('LoginID'),
+                'Password' => $this->request->getVar('Password'),
+                'DisplayName' => $this->request->getVar('DisplayName'),
+                'Name' => $this->request->getVar('Name'),
+                'SurName' => $this->request->getVar('SurName'),
+                'Gender' => $this->request->getVar('Gender'),
+                'EmailID'  => $this->request->getVar('EmailID'),
+                'Phone'  => $this->request->getVar('Phone'),
+                'Mobile'  => $this->request->getVar('Mobile'),
+                'Address1'  => $this->request->getVar('Address1'),
+                'Address2'  => $this->request->getVar('Address2'),
+                'idCountry'  => $this->request->getVar('idCountry'),
+                'idState'  => $this->request->getVar('idState'),
+                'idCity'  => $this->request->getVar('idCity'),
+                'idTimeZone'  => 1,
+                'idLocale'  => 1,
+                'Status'  => 'Active',
+                'UserType'  => 'User',
+                'isSuperAdmin'  => 0,
+                'DOB'  => $this->request->getVar('DOB'),
+                'UserRole'  => $role[0],
+                'idUserRole'  => $role[1],
+            ];
+            $userModel->insert($data);
+            return $this->response->redirect(site_url('/usersList'));
+        }else{
+             $stateModel = new stateModel();
+               $data['states'] = $stateModel->findstate();
+               $citiesModel = new citiesModel();
+               $data['cities'] = $citiesModel->findcities();
+
+               $UserRoleModel = new UserRoleModel();
+               $data['roles'] = $UserRoleModel->getroles();
+            $data['validation'] = $this->validator;
+            return view('setupUser',$data);
+        }
     }
     // show single user
     public function singleUser($id = null){
@@ -120,7 +144,8 @@ class Users extends Controller
     public function delete($id = null){
         $userModel = new UserModel();
         $data['user'] = $userModel->where('iduser', $id)->delete($id);
-        return $this->response->redirect(site_url('/usersList'));
+        echo '1';
+        //return $this->response->redirect(site_url('/usersList'));
     } 
 
     public function citiesByState($stateid=''){

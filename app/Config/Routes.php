@@ -41,6 +41,8 @@ $routes->get('/home', 'Home::index');
 $routes->get('usersList', 'Users::index');
 $routes->get('userForm', 'Users::create');
 $routes->post('submitForm', 'Users::store');
+//$routes->match(['get', 'post'], 'submitForm', 'Users::store');
+
 $routes->get('editView/(:num)', 'Users::singleUser/$1');
 $routes->post('update', 'Users::update');
 $routes->get('delete/(:num)', 'Users::delete/$1');

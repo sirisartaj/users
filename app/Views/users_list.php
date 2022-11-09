@@ -38,7 +38,7 @@
      <table class="table table-bordered" id="users-list">
        <thead>
           <tr>
-             <th>User Id</th>
+             <th>S.No</th>
              <th>Display Name</th>
              <th>Login ID</th>
              <th>Name</th>
@@ -49,10 +49,12 @@
           </tr>
        </thead>
        <tbody>
-          <?php if($userslist): ?>
+          <?php $u =1;
+          if($userslist): ?>
           <?php foreach($userslist as $user): ?>
           <tr>
-             <td><?php echo $user['iduser']; ?></td>
+             <!-- <td><?php echo $user['iduser']; ?></td> -->
+             <td><?php echo $u++; ?></td>
              <td><?php echo $user['DisplayName']; ?></td>
              <td><?php echo $user['LoginID']; ?></td>
              <td><?php echo $user['Name']; ?></td>
@@ -61,8 +63,8 @@
              <td><?php echo $user['EmailID']; ?></td>
              <td>
               <a href="<?php echo base_url('editView/'.$user['iduser']);?>" class="btn btn-primary btn-sm">Edit</a>
-              <a href="<?php echo base_url('delete/'.$user['iduser']);?>" class="btn btn-danger btn-sm">Delete</a>
-              <button type="button" onclick="changepwd('<?php echo $user['iduser'] ?>')"  class="btn btn-danger btn-sm"> Change Password</button>
+              <a onclick="deleteuser('<?php echo base_url('delete/'.$user['iduser']);?>');" href="javascript:void(0)"  class="btn btn-danger btn-sm">Delete</a>
+              <a href="javascript:void(0)" onclick="changepwd('<?php echo $user['iduser'] ?>')"  class="btn btn-danger btn-sm"> Change Password</a>
               </td>
           </tr>
          <?php endforeach; ?>
@@ -87,21 +89,29 @@ function changepwd(uid){
 
 
 Swal.fire({
-    title: "Add Note",
-    input: "password",
+    title: "Change Password",
+    html:
+    '<input id="swal-input1" class="swal2-input" type="password">' +
+    '<input id="swal-input2" class="swal2-input" type="password">',
     showCancelButton: true,
     confirmButtonColor: "#1FAB45",
     confirmButtonText: "Save",
     cancelButtonText: "Cancel",
     buttonsStyling: true,
     preConfirm: () => {
-    if($('.swal2-input').val()==''){
+    if($('#swal-input1').val()==''){
         Swal.showValidationMessage(
           `Please give the Password`
         )
     }
+    if($('#swal-input1').val()!=$('#swal-input2').val()){
+        Swal.showValidationMessage(
+          ` Password and confirm password should be same`
+        )
+    
       
   }
+    }
 }).then((result) => {
   if (result.isConfirmed) {
     if($('.swal2-input').val()){
@@ -135,10 +145,52 @@ Swal.fire({
 
 
 
-
-
-
 }
+
+
+function deleteuser(url){
+        Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    data: {},
+                    cache: false,
+                    success: function(response) {
+                       if(response==1){
+                       Swal.fire(
+                          'Deleted!',
+                          'Your file has been deleted.',
+                          'success'
+                        ).then((result) => {
+                            location.reload();
+                       } )
+                        
+                    }
+                    },
+                    failure: function (response) {
+                        Swal.fire(
+                        "Internal Error",
+                        "Oops,  not Deleted.", // had a missing comma
+                        "error"
+                        )
+                    }
+                });
+
+
+                
+              }
+            })
+    }
 </script>
 </body>
 </html>

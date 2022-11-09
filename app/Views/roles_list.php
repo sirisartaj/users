@@ -39,23 +39,27 @@
      <table class="table table-bordered" id="roles-list">
        <thead>
           <tr>
-             <th>Id</th>
+             <th>S.No</th>
+             <!-- <th>Id</th> -->
              <th>Name</th>
              <th>Status</th>
              <th>Action</th>
           </tr>
        </thead>
        <tbody>
-          <?php if($roles): ?>
+          <?php 
+          $r=1;
+          if($roles): ?>
           <?php foreach($roles as $role): ?>
           <tr>
-             <td><?php echo $role['iduserrole']; ?></td>
+             <!-- <td><?php echo $role['iduserrole']; ?></td> -->
+             <td><?php echo $r++; ?></td>
              <td><?php echo $role['name']; ?></td>
              <td><?php echo $role['status']==0?'Active':($role['status']==1?'InActive':'Delete'); ?></td>
              
              <td>
               <a href="<?php echo base_url('roleeditView/'.$role['iduserrole']);?>" class="btn btn-primary btn-sm">Edit</a>
-              <a href="<?php echo base_url('roledelete/'.$role['iduserrole']);?>" class="btn btn-danger btn-sm">Delete</a>
+              <a onclick="deleterole('<?php echo base_url('roledelete/'.$role['iduserrole']);?>');" href="javascript:void(0)" class="btn btn-danger btn-sm">Delete</a>
               <a href="<?php echo base_url('rolePrivileges/'.$role['iduserrole']);?>" class="btn btn-danger btn-sm">Privileges</a>
               </td>
           </tr>
@@ -69,10 +73,55 @@
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
 <script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready( function () {
       $('#roles-list').DataTable();
   } );
+
+    function deleterole(url){
+        Swal.fire({
+              title: 'Are you sure?',
+              text: "You won't be able to revert this!",
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+              if (result.isConfirmed) {
+
+                $.ajax({
+                    method: "GET",
+                    url: url,
+                    data: {},
+                    cache: false,
+                    success: function(response) {
+                       if(response==1){
+                       Swal.fire(
+                          'Deleted!',
+                          'Your file has been deleted.',
+                          'success'
+                        ).then((result) => {
+                            location.reload();
+                       } )
+                        
+                    }
+                    },
+                    failure: function (response) {
+                        Swal.fire(
+                        "Internal Error",
+                        "Oops,  not Deleted.", // had a missing comma
+                        "error"
+                        )
+                    }
+                });
+
+
+                
+              }
+            })
+    }
 </script>
 </body>
 </html>
