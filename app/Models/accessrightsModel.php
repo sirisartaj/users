@@ -14,7 +14,7 @@ class accessrightsModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['Name','parentname'];
+    protected $allowedFields = ['Name','parentname','created_at'];
 
     //protected $useTimestamps = false;
     protected $createdField  = 'created_at';

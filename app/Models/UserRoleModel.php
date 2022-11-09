@@ -14,7 +14,7 @@ class UserRoleModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['name','status','deleted_by','deleted_at'];
+    protected $allowedFields = ['name','status','deleted_by','deleted_at','created_at'];
 
     //protected $useTimestamps = false;
     protected $createdField  = 'created_at';
@@ -33,7 +33,7 @@ class UserRoleModel extends Model
        return $role = $this->db->where('iduserrole',$id);
     }
 
-    function adduser($user_id_array){
+    function addrole($user_id_array){
 
       // return $user = $userModel->find($user_id);
     }

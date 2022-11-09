@@ -24,7 +24,15 @@
         <label>Name</label>
         <input type="text" name="name" class="form-control" value="<?php echo $role_obj['name']; ?>">
       </div>
-      
+      <div class="form-group col-md-4">
+        <label for="status">Status</label>
+        <select id="status" class="form-control"  name="status">            
+            <option value="0" <?php echo $role_obj['status']=='0'?'selected':'';?>>Active</option>
+            <option value="1" <?php echo $role_obj['status']=='1'?'selected':'';?>>In Active</option>
+            <option value="9" <?php echo $role_obj['status']=='9'?'selected':'';?>>Delete</option>
+          </select>
+        
+      </div>
       <div class="form-group">
         <button type="submit" class="btn btn-danger btn-block">Save Data</button>
       </div>

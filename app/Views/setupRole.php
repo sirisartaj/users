@@ -23,7 +23,16 @@
       <div class="form-group col-md-4">
         <label for="name">Name</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-      </div>                
+      </div>  
+      <div class="form-group col-md-4">
+        <label for="status">Status</label>
+        <select id="status" class="form-control"  name="status">            
+            <option value="0">Active</option>
+            <option value="1">In Active</option>
+            <option value="9">Delete</option>
+          </select>
+        
+      </div>              
       </div>
       <div class="form-group col-3">
         <button type="submit" class="btn btn-primary btn-block">Update Data</button>

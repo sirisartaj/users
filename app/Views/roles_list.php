@@ -41,6 +41,7 @@
           <tr>
              <th>Id</th>
              <th>Name</th>
+             <th>Status</th>
              <th>Action</th>
           </tr>
        </thead>
@@ -50,6 +51,7 @@
           <tr>
              <td><?php echo $role['iduserrole']; ?></td>
              <td><?php echo $role['name']; ?></td>
+             <td><?php echo $role['status']==0?'Active':($role['status']==1?'InActive':'Delete'); ?></td>
              
              <td>
               <a href="<?php echo base_url('roleeditView/'.$role['iduserrole']);?>" class="btn btn-primary btn-sm">Edit</a>

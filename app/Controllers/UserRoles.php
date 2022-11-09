@@ -25,7 +25,7 @@ class UserRoles extends Controller
 
         $data = [            
             'name' => $this->request->getVar('name'),
-            'status' => 0            
+            'status' => $this->request->getVar('status'),           
         ];
         $UserRoleModel->insert($data);
         return $this->response->redirect(site_url('/rolesList'));
@@ -43,6 +43,7 @@ class UserRoles extends Controller
         $id = $this->request->getVar('iduserrole');
         $data = [
             'name' => $this->request->getVar('name'),
+            'status' => $this->request->getVar('status'),
             'updated_at'  => date("Y-m-d H:i:s"),
         ];
         $UserRoleModel->update($id, $data);

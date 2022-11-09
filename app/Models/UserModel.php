@@ -14,7 +14,7 @@ class UserModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['LoginID','Name', 'SurName','EmailID','Password','DisplayName','Gender','Phone','Mobile','Address1','Address2','idCountry','idState','idCity','idTimeZone','idLocale','Status','UserType','isSuperAdmin','DOB','UserRole','idUserRole'];
+    protected $allowedFields = ['LoginID','Name', 'SurName','EmailID','Password','DisplayName','Gender','Phone','Mobile','Address1','Address2','idCountry','idState','idCity','idTimeZone','idLocale','Status','UserType','isSuperAdmin','DOB','UserRole','idUserRole','created_at'];
 
     //protected $useTimestamps = false;
     protected $createdField  = 'created_at';

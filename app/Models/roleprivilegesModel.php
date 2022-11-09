@@ -14,7 +14,7 @@ class roleprivilegesModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['iduserrole','idaccessright'];
+    protected $allowedFields = ['iduserrole','idaccessright','created_at'];
 
     //protected $useTimestamps = false;
     protected $createdField  = 'created_at';

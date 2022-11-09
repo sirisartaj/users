@@ -13,7 +13,7 @@ class citiesModel extends Model
     protected $returnType     = 'array';
     protected $useSoftDeletes = true;
 
-    protected $allowedFields = ['state_id','status','name'];
+    protected $allowedFields = ['state_id','status','name','created_at'];
 
     //protected $useTimestamps = false;
     protected $createdField  = 'created_at';
