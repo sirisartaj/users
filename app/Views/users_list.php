@@ -75,18 +75,21 @@
 </div>
  
 <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css">
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready( function () {
-      $('#users-list').DataTable();
+      table = $('#users-list').DataTable({
+           
+        });
   } );
 
 function changepwd(uid){
-
-//alert(uid);
-
+    table.destroy();
+// alert($('input[type=search]').val());
+// $('input[type=search]').val('');
 
 Swal.fire({
     title: "Change Password",
@@ -99,6 +102,10 @@ Swal.fire({
     cancelButtonText: "Cancel",
     buttonsStyling: true,
     preConfirm: () => {
+        // $('input[type=search]').val('');
+        // $('#table-filter').on('change', function(){
+        //   table.search( this.value ).draw();
+        // });
     if($('#swal-input1').val()==''){
         Swal.showValidationMessage(
           `Please give the Password`
@@ -130,15 +137,13 @@ Swal.fire({
             location.reload();
         }
         },
-        failure: function (response) {
-            Swal.fire(
-            "Internal Error",
-            "Oops, your Password was not saved.", // had a missing comma
-            "error"
-            )
-        }
+        
     });
 }
+}else{
+    table = $('#users-list').DataTable({
+           
+        });
 }
 })
 
