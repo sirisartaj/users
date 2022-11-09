@@ -35,16 +35,16 @@ class Users extends Controller
         $role=explode('_', $this->request->getVar('UserRole')); 
 
 
-        helper(['form']);
-        $rules = [
-            'DisplayName' => 'required|min_length[3]',
-            'name' => 'required|min_length[3]',
-            'EmailID' => 'required|valid_email',
-            'phone' => 'required|numeric|max_length[10]',
-            'Mobile' => 'required|numeric|max_length[10]'
-        ];
+        // helper(['form']);
+        // $rules = [
+        //     'DisplayName' => 'required|min_length[3]',
+        //     'name' => 'required|min_length[3]',
+        //     'EmailID' => 'required|valid_email',
+        //     'phone' => 'required|numeric|max_length[10]',
+        //     'Mobile' => 'required|numeric|max_length[10]'
+        // ];
 
-        if($this->validate($rules)){
+        // if($this->validate($rules)){
 
 
             $data = [
@@ -73,17 +73,17 @@ class Users extends Controller
             ];
             $userModel->insert($data);
             return $this->response->redirect(site_url('/usersList'));
-        }else{
-             $stateModel = new stateModel();
-               $data['states'] = $stateModel->findstate();
-               $citiesModel = new citiesModel();
-               $data['cities'] = $citiesModel->findcities();
+        // }else{
+        //      $stateModel = new stateModel();
+        //        $data['states'] = $stateModel->findstate();
+        //        $citiesModel = new citiesModel();
+        //        $data['cities'] = $citiesModel->findcities();
 
-               $UserRoleModel = new UserRoleModel();
-               $data['roles'] = $UserRoleModel->getroles();
-            $data['validation'] = $this->validator;
-            return view('setupUser',$data);
-        }
+        //        $UserRoleModel = new UserRoleModel();
+        //        $data['roles'] = $UserRoleModel->getroles();
+        //     $data['validation'] = $this->validator;
+        //     return view('setupUser',$data);
+        // }
     }
     // show single user
     public function singleUser($id = null){

@@ -17,8 +17,7 @@
 </head>
 <body>
   <div class="m-5 mt-5">
-    <?php $validation = \Config\Services::validation(); echo "<pre>";print_r($validation);?>
-    <form method="post" id="add_create" name="add_create" action="<?= site_url('/submitForm') ?>" >
+    <form method="post" id="add_create" name="add_create" action="<?= site_url('/submitForm') ?>" onsubmit="return validcreateform();">
      <div class="row">
       <div class="form-group col-md-4">
                   <label for="dname">Display Name</label>
@@ -26,14 +25,9 @@
                   <span id="dname-error" class="error"></span>
                 </div>
                 <div class="form-group col-md-4">
-                  <label for="Name">First Name</label>
-                  <input type="text" class="form-control" id="Name" name="Name"  placeholder="First Name">
-                  <span id="Name-error" class="error"></span>
-                    <?php if($validation->getError('Name')) {?>
-                        <div class='alert alert-danger mt-2'>
-                          <?= $error = $validation->getError('Name'); ?>
-                        </div>
-                    <?php }?>
+                  <label for="name">First Name</label>
+                  <input type="text" class="form-control" id="name" name="Name"  placeholder="First Name">
+                  <span id="name-error" class="error"></span>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="lastName">Last Name</label>
@@ -138,7 +132,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/additional-methods.min.js"></script>
   <script>
 
-    function validcreateform1(){
+    function validcreateform(){
       var error=0;
       if($('#dname').val()==''){
         $('#dname-error').html('please enter Display Name');
@@ -147,11 +141,11 @@
         $('#dname-error').html('');
       }
 
-      if($('#Name').val()==''){
-        $('#Name-error').html('please enter First Name');
+      if($('#name').val()==''){
+        $('#name-error').html('please enter First Name');
         error=1;
       }else{
-        $('#Name-error').html('');
+        $('#name-error').html('');
       }
       if($('#EmailId').val()==''){
         $('#EmailId-error').html('please enter EmailId');
