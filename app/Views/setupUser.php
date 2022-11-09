@@ -52,12 +52,12 @@
                 </div>
                 <div class="form-group col-md-4">
                   <label for="Phone">Phone</label>
-                  <input type="text" class="form-control" id="Phone" name="Phone" placeholder="Phone">
+                  <input type="text" class="form-control numbersonly" id="Phone" name="Phone" placeholder="Phone">
                   <span id="Phone-error" class="error"></span>
                 </div>
                 <div class="form-group col-md-4">
                   <label for="mobile">Mobile</label>
-                  <input type="text" class="form-control" id="mobile" name="Mobile" placeholder="Mobile">
+                  <input type="text" class="form-control numbersonly" id="mobile" name="Mobile" placeholder="Mobile">
                   <span id="mobile-error" class="error"></span>
                 </div>
                 <div class="form-group col-md-4">
@@ -183,6 +183,16 @@
         return false;
       }
     }
+
+$(".numbersonly").bind("keypress", function (e) {
+    e = (e) ? e : window.event;
+    var charCode = (e.which) ? e.which : e.keyCode;    
+    if (charCode != 8 && charCode != 0 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+  });
+
+       
 
 
 /*
